@@ -34,11 +34,20 @@ class MyGame extends Phaser.Scene
             
         scoreElement.innerText="0";
 
+        this.load.audio("main", ["src/assets/music/mygame.mp3"]);
+
+
+
     }
 
       
     create ()
     {
+
+        this.music = this.sound.add("main", {loop: true});
+
+        this.music.play();
+        
     
         this.map = this.make.tilemap({ key: 'map' });
         this.tileset = this.map.addTilesetImage('tileset', 'tiles');
@@ -73,6 +82,7 @@ class MyGame extends Phaser.Scene
     }
 
     nextLevel () {
+        this.music.stop();
         var scoreElement = document.getElementsByClassName('score-amount')[0];
         
         var currentScore = scoreElement.innerText;

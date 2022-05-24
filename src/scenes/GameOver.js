@@ -8,11 +8,16 @@ class GameOver extends Phaser.Scene {
         this.load.image('retry', retry);
         document.getElementById("score").style.visibility = "hidden";
         document.getElementById("lives").style.visibility = "hidden";
+        this.load.audio("gameoverM", ["src/assets/music/gameover.mp3"]);
+
     }
     init(data) {
         this.score = data.score;
     }
     create() {
+        this.sound = this.sound.add("gameoverM", {loop: false})
+
+        this.sound.play();
         this.cameras.main.setBackgroundColor('#000');
 
         this.add.text(240, 200, 'GameOver', { fontSize: '32px'});

@@ -34,8 +34,7 @@ class SecondLevel extends Phaser.Scene
         document.getElementById("score").style.visibility = "visible";
         document.getElementById("lives").style.visibility = "visible";
 
-           
-        
+        this.load.audio("main", ["src/assets/music/mygame.mp3"]);        
         
 
     }
