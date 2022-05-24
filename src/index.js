@@ -1,39 +1,27 @@
 import Phaser from 'phaser';
-import logoImg from './assets/logo.png';
 
-class MyGame extends Phaser.Scene
-{
-    constructor ()
-    {
-        super();
-    }
-
-    preload ()
-    {
-        this.load.image('logo', logoImg);
-    }
-      
-    create ()
-    {
-        const logo = this.add.image(400, 150, 'logo');
-      
-        this.tweens.add({
-            targets: logo,
-            y: 450,
-            duration: 2000,
-            ease: "Power2",
-            yoyo: true,
-            loop: -1
-        });
-    }
-}
+import TitleScene from './titleScene.js'
+import Controls from './scenes/Controls.js'
+import MyGame from './scenes/MyGame.js'
+import SecondLevel from './scenes/SecondLevel.js'
+import GameOver from './scenes/GameOver.js'
+import Victory from './scenes/Victory.js'
 
 const config = {
     type: Phaser.AUTO,
-    parent: 'phaser-example',
-    width: 800,
-    height: 600,
-    scene: MyGame
+    parent: 'mario',
+    width: 640,
+    height: 480,
+    backgroundColor: '#FFFFAC',
+    pixelArt: true,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 900 }
+        }
+    },
+    scene: [TitleScene, Controls, MyGame, SecondLevel, Victory, GameOver,]
 };
 
-const game = new Phaser.Game(config);
+new Phaser.Game(config);
+

@@ -20,6 +20,14 @@ module.exports = {
         use: "raw-loader"
       },
       {
+        test: /\.scss$/,
+        use: [
+            "style-loader", // 3. Inject styles into DOM
+            "css-loader", // 2. Turns css into commonjs
+            "sass-loader", // 1. Turns sass into css
+        ],
+    },
+      {
         test: /\.(gif|png|jpe?g|svg|xml)$/i,
         use: "file-loader"
       }
