@@ -34,10 +34,10 @@ class MyGame extends Phaser.Scene
             
         scoreElement.innerText="0";
 
-        this.load.audio("main", ["assets/mygame.mp3"]);
-        this.load.audio("1down", ["assets/1down.mp3"]);
-        this.load.audio("pipe", ["assets/pipe.mp3"]);
-        this.load.audio("coin", ["assets/coin.mp3"]);
+        this.load.audio("main", ["src/assets/music/mygame.mp3"]);
+        this.load.audio("1down", ["src/assets/music/1down.mp3"]);
+        this.load.audio("pipe", ["src/assets/music/pipe.mp3"]);
+        this.load.audio("coin", ["src/assets/music/coin.mp3"]);
 
 
     }

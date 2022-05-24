@@ -34,10 +34,10 @@ class SecondLevel extends Phaser.Scene
         document.getElementById("score").style.visibility = "visible";
         document.getElementById("lives").style.visibility = "visible";
 
-        this.load.audio("under", ["assets/under.mp3"]);        
-        this.load.audio("clear", ["assets/clear.mp3"]);
-        this.load.audio("oneDown", ["assets/1down.mp3"]);
-        this.load.audio("coin", ["assets/coin.mp3"]);
+        this.load.audio("under", ["src/assets/music/under.mp3"]);        
+        this.load.audio("clear", ["src/assets/music/clear.mp3"]);
+        this.load.audio("oneDown", ["src/assets/music/1down.mp3"]);
+        this.load.audio("coin", ["src/assets/music/coin.mp3"]);
 
 
     }
