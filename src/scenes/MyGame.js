@@ -35,7 +35,9 @@ class MyGame extends Phaser.Scene
         scoreElement.innerText="0";
 
         this.load.audio("main", ["src/assets/music/mygame.mp3"]);
-
+        this.load.audio("1down", ["src/assets/music/1down.mp3"]);
+        this.load.audio("pipe", ["src/assets/music/pipe.mp3"]);
+        this.load.audio("coin", ["src/assets/music/coin.mp3"]);
 
 
     }
@@ -47,6 +49,10 @@ class MyGame extends Phaser.Scene
         this.music = this.sound.add("main", {loop: true});
 
         this.music.play();
+
+        this.d1 = this.sound.add("1down", {loop: false});
+        this.pipeM = this.sound.add("pipe", {loop: false});
+        this.coinM = this.sound.add("coin", {loop: false});
         
     
         this.map = this.make.tilemap({ key: 'map' });
@@ -83,6 +89,7 @@ class MyGame extends Phaser.Scene
 
     nextLevel () {
         this.music.stop();
+        this.pipeM.play();
         var scoreElement = document.getElementsByClassName('score-amount')[0];
         
         var currentScore = scoreElement.innerText;
@@ -96,17 +103,20 @@ class MyGame extends Phaser.Scene
         
     }
     gameOver () {
+        this.music.stop();
         decreaseLives(1);
         const livesElement = document.getElementsByClassName('lives-amount')[0];
         const currentLives = Number(livesElement.innerText);
 
 
         if (currentLives>0) {
+            this.d1.play();
+            
             setTimeout(() => {
             
                 this.scene.restart("MyGame");
         
-            }, 1500);
+            }, 3000);
             
         } else {
             setTimeout(() => {

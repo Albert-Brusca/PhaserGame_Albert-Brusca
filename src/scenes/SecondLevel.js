@@ -34,8 +34,11 @@ class SecondLevel extends Phaser.Scene
         document.getElementById("score").style.visibility = "visible";
         document.getElementById("lives").style.visibility = "visible";
 
-        this.load.audio("main", ["src/assets/music/mygame.mp3"]);        
-        
+        this.load.audio("under", ["src/assets/music/under.mp3"]);        
+        this.load.audio("clear", ["src/assets/music/clear.mp3"]);
+        this.load.audio("oneDown", ["src/assets/music/1down.mp3"]);
+        this.load.audio("coin", ["src/assets/music/coin.mp3"]);
+
 
     }
     init(data) {
@@ -47,6 +50,12 @@ class SecondLevel extends Phaser.Scene
 
     create ()
     {
+
+        this.music = this.sound.add("under", {loop: true});
+        this.clear = this.sound.add("clear", {loop: false});
+        this.d1 = this.sound.add("oneDown", {loop: false});
+        this.coinM = this.sound.add("coin", {loop: false});
+        this.music.play();
 
         this.map = this.make.tilemap({ key: 'map2' });
         this.tileset = this.map.addTilesetImage('tileset', 'tiles');
@@ -91,12 +100,14 @@ class SecondLevel extends Phaser.Scene
 
 
     gameOver () {
+        this.music.stop();
         decreaseLives(1);
         const livesElement = document.getElementsByClassName('lives-amount')[0];
         const currentLives = Number(livesElement.innerText);
 
 
         if (currentLives>0) {
+            this.d1.play();
             setTimeout(() => {
                 
                 this.scene.start("SecondLevel", { score: this.initialScore});
@@ -117,6 +128,8 @@ class SecondLevel extends Phaser.Scene
     }
 
     victory () {
+        this.music.stop();
+        this.clear.play();
         setTimeout(() => {
             var scoreElement = document.getElementsByClassName('score-amount')[0];
         

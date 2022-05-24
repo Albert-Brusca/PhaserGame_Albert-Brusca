@@ -37,6 +37,7 @@ class Coin {
         for (const coin of this.coins.children.entries) {
             if (!coin.body.touching.none) {
                 coin.body.setEnable(false);
+                this.scene.coinM.play();
 
                 this.scene.tweens.add({
                     targets: coin,

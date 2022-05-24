@@ -60,6 +60,7 @@ class Enemies {
         
 
         const mygame = this.scene.scene.get("MyGame");
+        
         mygame.gameOver();
     
     }

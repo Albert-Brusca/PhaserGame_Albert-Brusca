@@ -8,11 +8,14 @@ class Victory extends Phaser.Scene {
         this.load.image('retry', retry);
         document.getElementById("score").style.visibility = "hidden";
         document.getElementById("lives").style.visibility = "hidden";
+
     }
     init(data) {
         this.score = data.score;
     }
     create() {
+
+        
         this.cameras.main.setBackgroundColor('#000');
 
         this.add.text(240, 200, 'Victory', { fontSize: '32px'});
