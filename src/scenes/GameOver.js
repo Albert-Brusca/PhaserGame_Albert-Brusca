@@ -8,7 +8,7 @@ class GameOver extends Phaser.Scene {
         this.load.image('retry', retry);
         document.getElementById("score").style.visibility = "hidden";
         document.getElementById("lives").style.visibility = "hidden";
-        this.load.audio("gameoverM", ["src/assets/music/gameover.mp3"]);
+        this.load.audio("gameoverM", ["assets/gameover.mp3"]);
 
     }
     init(data) {
