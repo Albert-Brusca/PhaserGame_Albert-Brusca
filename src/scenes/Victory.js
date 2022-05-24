@@ -1,4 +1,4 @@
-import retry from '../assets/retry-pixel.png'
+import retry from '../assets/replay.png'
 class Victory extends Phaser.Scene {
     constructor () {
         super('Victory');
@@ -7,6 +7,7 @@ class Victory extends Phaser.Scene {
     preload() {
         this.load.image('retry', retry);
         document.getElementById("score").style.visibility = "hidden";
+        document.getElementById("lives").style.visibility = "hidden";
     }
     init(data) {
         this.score = data.score;
