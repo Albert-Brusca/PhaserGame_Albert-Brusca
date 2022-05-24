@@ -1,3 +1,11 @@
+# PhaserGame_Albert-Brusca
+
+Game: 
+
+
+
+
+
 # Phaser 3 Webpack Project Template
 
 A Phaser 3 project template with ES6 support via [Babel 7](https://babeljs.io/) and [Webpack 4](https://webpack.js.org/) that includes hot-reloading for development and production-ready builds.
@@ -47,4 +55,3 @@ If you want to customize your build, such as adding a new webpack loader or plug
 After you run the `npm run build` command, your code will be built into a single bundle located at `dist/bundle.min.js` along with any other assets you project depended. 
 
 If you put the contents of the `dist` folder in a publicly-accessible location (say something like `http://mycoolserver.com`), you should be able to open `http://mycoolserver.com/index.html` and play your game.
-# PhaserGame_Albert-Brusca
