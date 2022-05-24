@@ -7,6 +7,7 @@ class GameOver extends Phaser.Scene {
     preload() {
         this.load.image('retry', retry);
         document.getElementById("score").style.visibility = "hidden";
+        document.getElementById("lives").style.visibility = "hidden";
     }
     init(data) {
         this.score = data.score;
@@ -25,6 +26,10 @@ class GameOver extends Phaser.Scene {
         button1.on('pointerdown',function () {
             var els=document.getElementsByClassName('score-amount')[0];
             els.innerHTML = "0";
+
+            var livesElement = document.getElementsByClassName('lives-amount')[0];
+        
+            livesElement.innerHTML = "3";
             this.scene.start("MyGame");
             
     

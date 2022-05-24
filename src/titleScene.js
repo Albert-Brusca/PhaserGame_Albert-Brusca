@@ -2,6 +2,7 @@ import { NONE } from 'phaser';
 import logoImg from './assets/logo.png'
 import playButton from './assets/start-pixel.png'
 import controlsButton from './assets/controls-pixel.png'
+import github from './assets/github.png'
 
 class TitleScene extends Phaser.Scene {
 
@@ -15,6 +16,8 @@ class TitleScene extends Phaser.Scene {
         this.load.image('logo', logoImg);
         this.load.image('playbutton', playButton);
         this.load.image('controls', controlsButton);
+        this.load.image('controls', controlsButton);
+        this.load.image('github', github);
         
 
     }
@@ -25,7 +28,7 @@ class TitleScene extends Phaser.Scene {
         this.cameras.main.setBackgroundColor('#87F5FB');        
         
         const logo = this.add.image(320, 130, 'logo');
-        logo.setScale(1.5);
+        logo.setScale(0.11);
 
         this.add.text(450, 230, "by Albert Brusca", {color: "black", mode: Phaser.Scale.ScaleModes.FIT});
         
@@ -45,6 +48,15 @@ class TitleScene extends Phaser.Scene {
         button2.on('pointerdown',function () {
             
             this.scene.start('Controls');
+    
+        }, this);
+
+        const button3 = this.add.image(530,430, 'github')
+        button3.setScale(0.17);
+        button3.setInteractive();
+        button3.on('pointerdown',function () {
+            
+            window.open('https://github.com/Albert-Brusca/PhaserGame_Albert-Brusca');
     
         }, this);
 

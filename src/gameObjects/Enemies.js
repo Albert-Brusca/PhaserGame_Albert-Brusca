@@ -57,6 +57,7 @@ class Enemies {
 
         this.scene.physics.world.removeCollider(this.scene.player.collider);
         this.scene.physics.world.removeCollider(this.collider);
+        
 
         const mygame = this.scene.scene.get("MyGame");
         mygame.gameOver();

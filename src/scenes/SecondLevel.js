@@ -9,6 +9,7 @@ import generateAnimations from '../config/animations'
 import Enemies from '../gameObjects/Enemies2';
 import map from './../assets/mapa2.json'
 import Flag from '../gameObjects/Flag';
+import decreaseLives from '../ui/decreaseLives'
 
 class SecondLevel extends Phaser.Scene
 {
@@ -29,16 +30,25 @@ class SecondLevel extends Phaser.Scene
         this.load.on('complete', () => {
             generateAnimations(this);
         });
+        
         document.getElementById("score").style.visibility = "visible";
+        document.getElementById("lives").style.visibility = "visible";
+
+           
+        
         
 
     }
     init(data) {
         this.score = data.score;
+        this.lives = data.lives;
+        
+        
     }
 
     create ()
     {
+
         this.map = this.make.tilemap({ key: 'map2' });
         this.tileset = this.map.addTilesetImage('tileset', 'tiles');
         this.platform = this.map.createLayer('platform', this.tileset, 0, 0);
@@ -57,6 +67,20 @@ class SecondLevel extends Phaser.Scene
         this.flag= new Flag(this);
 
         this.inputs = this.input.keyboard.createCursorKeys();
+        var scoreElement = document.getElementsByClassName('score-amount')[0];
+
+        
+        this.cont = 0;
+        if(this.cont==0) {
+            this.initialScore=this.score;
+            this.cont++;
+
+        }
+        console.log(this.initialScore)
+        scoreElement.innerText =this.initialScore;
+
+        
+
 
     }
 
@@ -68,13 +92,29 @@ class SecondLevel extends Phaser.Scene
 
 
     gameOver () {
-        setTimeout(() => {
-            var scoreElement = document.getElementsByClassName('score-amount')[0];
+        decreaseLives(1);
+        const livesElement = document.getElementsByClassName('lives-amount')[0];
+        const currentLives = Number(livesElement.innerText);
+
+
+        if (currentLives>0) {
+            setTimeout(() => {
+                
+                this.scene.start("SecondLevel", { score: this.initialScore});
+                
         
-            var currentScore = scoreElement.innerText;
-            this.scene.start('GameOver', { score: currentScore});
+            }, 900);
+            
+        } else {
+            setTimeout(() => {
+                var scoreElement = document.getElementsByClassName('score-amount')[0];
+            
+                var currentScore = scoreElement.innerText;
     
-        }, 1500);
+                this.scene.start('GameOver', { score: currentScore});
+        
+            }, 900);
+        }
     }
 
     victory () {

@@ -57,6 +57,7 @@ class Enemies {
 
         this.scene.physics.world.removeCollider(this.scene.player.collider);
         this.scene.physics.world.removeCollider(this.collider);
+        this.scene.physics.world.removeCollider(this.scene.out);
 
         const mygame = this.scene.scene.get("SecondLevel");
         mygame.gameOver();

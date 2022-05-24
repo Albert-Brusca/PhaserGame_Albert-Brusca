@@ -25,6 +25,9 @@ class Victory extends Phaser.Scene {
         button1.on('pointerdown',function () {
             var els=document.getElementsByClassName('score-amount')[0];
             els.innerHTML = "0";
+            var livesElement = document.getElementsByClassName('lives-amount')[0];
+        
+            livesElement.innerHTML = "3";
             this.scene.start("MyGame");
             
     

@@ -8,6 +8,7 @@ import atlasmario from './../assets/image/mario-atlas.json'
 
 import generateAnimations from '../config/animations'
 import Enemies from '../gameObjects/Enemies';
+import decreaseLives from '../ui/decreaseLives'
 
 
 class MyGame extends Phaser.Scene
@@ -28,6 +29,10 @@ class MyGame extends Phaser.Scene
             generateAnimations(this);
         });
         document.getElementById("score").style.visibility = "visible";
+        document.getElementById("lives").style.visibility = "visible";
+        var scoreElement = document.getElementsByClassName('score-amount')[0];
+            
+        scoreElement.innerText="0";
 
     }
 
@@ -71,19 +76,39 @@ class MyGame extends Phaser.Scene
         var scoreElement = document.getElementsByClassName('score-amount')[0];
         
         var currentScore = scoreElement.innerText;
+
+        var livesElement = document.getElementsByClassName('lives-amount')[0];
         
-        this.scene.start('SecondLevel', { score: currentScore});
+        var currentLives = livesElement.innerText;
+        
+        this.scene.start('SecondLevel', { score: currentScore, lives: currentLives});
         
         
     }
     gameOver () {
-        setTimeout(() => {
-            var scoreElement = document.getElementsByClassName('score-amount')[0];
+        decreaseLives(1);
+        const livesElement = document.getElementsByClassName('lives-amount')[0];
+        const currentLives = Number(livesElement.innerText);
+
+
+        if (currentLives>0) {
+            setTimeout(() => {
+            
+                this.scene.restart("MyGame");
         
-            var currentScore = scoreElement.innerText;
-            this.scene.start('GameOver', { score: currentScore});
+            }, 1500);
+            
+        } else {
+            setTimeout(() => {
+                var scoreElement = document.getElementsByClassName('score-amount')[0];
+            
+                var currentScore = scoreElement.innerText;
     
-        }, 1500);
+                this.scene.start('GameOver', { score: currentScore});
+        
+            }, 1500);
+        }
+        
     }
 
 
